@@ -4,7 +4,7 @@ module.exports = {
     async postCreate(req, res) {
         try {
             const company = await db.Company.create(req.body);
-            res.status(201).json(company); // Retorna o objeto criado
+            res.status(201).json(company); 
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
@@ -13,7 +13,7 @@ module.exports = {
     async getList(req, res) {
         try {
             const companies = await db.Company.findAll();
-            res.status(200).json(companies); // Retorna a lista de empresas
+            res.status(200).json(companies); 
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -23,7 +23,7 @@ module.exports = {
         try {
             const company = await db.Company.findByPk(req.params.id);
             if (company) {
-                res.status(200).json(company); // Retorna a empresa específica
+                res.status(200).json(company); 
             } else {
                 res.status(404).json({ message: 'Company não encontrada' });
             }
@@ -37,7 +37,7 @@ module.exports = {
             const company = await db.Company.findByPk(req.params.id);
             if (company) {
                 await company.update(req.body);
-                res.status(200).json(company); // Retorna a empresa atualizada
+                res.status(200).json(company); 
             } else {
                 res.status(404).json({ message: 'Company não encontrada' });
             }
@@ -51,7 +51,7 @@ module.exports = {
             const company = await db.Company.findByPk(req.params.id);
             if (company) {
                 await company.destroy();
-                res.status(204).send(); // Retorno vazio indicando sucesso
+                res.status(204).send(); 
             } else {
                 res.status(404).json({ message: 'Company não encontrada' });
             }
