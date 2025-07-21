@@ -4,7 +4,7 @@ module.exports = {
     async postCreate(req, res) {
         try {
             const jobApplication = await db.Job_Application.create(req.body);
-            res.status(201).json(jobApplication); // Retorna o objeto criado
+            res.status(201).json(jobApplication); 
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
@@ -13,7 +13,7 @@ module.exports = {
     async getList(req, res) {
         try {
             const jobApplications = await db.Job_Application.findAll();
-            res.status(200).json(jobApplications); // Retorna a lista de aplicações de emprego
+            res.status(200).json(jobApplications); 
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -23,7 +23,7 @@ module.exports = {
         try {
             const jobApplication = await db.Job_Application.findByPk(req.params.id);
             if (jobApplication) {
-                res.status(200).json(jobApplication); // Retorna a aplicação específica
+                res.status(200).json(jobApplication); 
             } else {
                 res.status(404).json({ message: 'Job Application não encontrada' });
             }
@@ -37,7 +37,7 @@ module.exports = {
             const jobApplication = await db.Job_Application.findByPk(req.params.id);
             if (jobApplication) {
                 await jobApplication.update(req.body);
-                res.status(200).json(jobApplication); // Retorna a aplicação atualizada
+                res.status(200).json(jobApplication);
             } else {
                 res.status(404).json({ message: 'Job Application não encontrada' });
             }
@@ -51,7 +51,7 @@ module.exports = {
             const jobApplication = await db.Job_Application.findByPk(req.params.id);
             if (jobApplication) {
                 await jobApplication.destroy();
-                res.status(204).send(); // Retorno vazio indicando sucesso
+                res.status(204).send(); 
             } else {
                 res.status(404).json({ message: 'Job Application não encontrada' });
             }
