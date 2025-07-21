@@ -4,7 +4,7 @@ module.exports = {
     async postCreate(req, res) {
         try {
             const contact = await db.Contacts.create(req.body);
-            res.status(201).json(contact); // Retorna o objeto criado
+            res.status(201).json(contact); 
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
@@ -13,7 +13,7 @@ module.exports = {
     async getList(req, res) {
         try {
             const contacts = await db.Contacts.findAll();
-            res.status(200).json(contacts); // Retorna a lista de contatos
+            res.status(200).json(contacts); 
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -23,7 +23,7 @@ module.exports = {
         try {
             const contact = await db.Contacts.findByPk(req.params.id);
             if (contact) {
-                res.status(200).json(contact); // Retorna o contato específico
+                res.status(200).json(contact); 
             } else {
                 res.status(404).json({ message: 'Contato não encontrado' });
             }
@@ -37,7 +37,7 @@ module.exports = {
             const contact = await db.Contacts.findByPk(req.params.id);
             if (contact) {
                 await contact.update(req.body);
-                res.status(200).json(contact); // Retorna o contato atualizado
+                res.status(200).json(contact); 
             } else {
                 res.status(404).json({ message: 'Contato não encontrado' });
             }
@@ -51,7 +51,7 @@ module.exports = {
             const contact = await db.Contacts.findByPk(req.params.id);
             if (contact) {
                 await contact.destroy();
-                res.status(204).send(); // Retorno vazio indicando sucesso
+                res.status(204).send(); 
             } else {
                 res.status(404).json({ message: 'Contato não encontrado' });
             }
